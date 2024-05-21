@@ -1,0 +1,41 @@
+{
+  "name": "@akbaraditamasp/ssh-tunnel",
+  "version": "1.0.0",
+  "description": "A CLI app to easily create SSH tunnels",
+  "main": "/dist/ssh-tunnel.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./dist/ssh-tunnel.js",
+    "prepublishOnly": "npm run build"
+  },
+  "bin": {
+    "ssh-tunnel": "./dist/ssh-tunnel.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "SSH",
+    "tunnel",
+    "CLI",
+    "network"
+  ],
+  "author": "akbaraditamasp <akbaraditamasp@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akbaraditamasp/ssh-tunnel.git"
+  },
+  "homepage": "https://github.com/akbaraditamasp/ssh-tunnel",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^12.1.0",
+    "pino": "^9.1.0",
+    "pino-pretty": "^11.0.0",
+    "ssh2": "^1.15.0"
+  },
+  "devDependencies": {
+    "@types/ssh2": "^1.15.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
