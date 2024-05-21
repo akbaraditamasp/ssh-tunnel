@@ -10,7 +10,7 @@ const program = new Command();
 program
   .name("ssh-tunnel")
   .description("CLI to create SSH Tunnel")
-  .version("1.0.2");
+  .version("1.0.3");
 
 program
   .command("start")

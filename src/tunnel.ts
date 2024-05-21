@@ -39,12 +39,6 @@ export default function tunnel(
           stream.end();
           conn.end();
         });
-
-        localConn.on("close", () => {
-          logger.error("Local connection :: disconnected");
-          stream.end();
-          conn.end();
-        });
       });
     })
     .connect(config);
