@@ -21,7 +21,7 @@ export default function tunnel(
       conn.forwardIn("0.0.0.0", remotePort, (err) => {
         if (err) {
           logger.error("Forwarding error:", err);
-          return;
+          conn.end();
         }
         logger.info(
           `Forwarding from remote "0.0.0.0":${remotePort} to local ${localHost}:${localPort}`
@@ -35,8 +35,15 @@ export default function tunnel(
         });
 
         localConn.on("error", (err) => {
-          console.error("Local connection error:", err);
+          logger.error("Local connection error:", err);
           stream.end();
+          conn.end();
+        });
+
+        localConn.on("close", () => {
+          logger.error("Local connection :: disconnected");
+          stream.end();
+          conn.end();
         });
       });
     })
@@ -44,9 +51,11 @@ export default function tunnel(
 
   conn.on("error", (err) => {
     logger.error("Connection error:", err);
+    process.exit(1);
   });
 
   conn.on("end", () => {
-    logger.info("Client :: disconnected");
+    logger.error("Client :: disconnected");
+    process.exit(1);
   });
 }

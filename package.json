@@ -1,6 +1,6 @@
 {
   "name": "@akbaraditamasp/ssh-tunnel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A CLI app to easily create SSH tunnels",
   "main": "/dist/ssh-tunnel.js",
   "scripts": {
